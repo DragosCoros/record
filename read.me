@@ -1,0 +1,42 @@
+- I used Postgre SQL for saving the data
+- Creating the table
+
+--DROP TABLE RECORD; --IF Exists
+
+CREATE TABLE record (
+	application_number serial PRIMARY KEY,
+	manufacturer_name VARCHAR ( 50 ) NOT NULL,
+	substance_name VARCHAR ( 50 ) NOT NULL,
+	product_number VARCHAR ( 255 ) NOT NULL
+);
+
+Running the application: RestApiApplication as a Java Application in IntellijIDea
+
+Getting All the Records
+http://localhost:8080/record/getAll
+
+Getting Records By ID
+http://localhost:8080/record/{recordId}
+
+ADD Record
+POST http://localhost:8080/record
+BODY:
+{
+        "applicationNumber": 4,
+        "manufacturerName": "aa",
+        "substanceName": "bb",
+        "productNumber": "dbfb"
+}
+
+UPDATE Record
+PUT: http://localhost:8080/record/{recordID}
+BODY:
+{
+        "applicationNumber": 4,
+        "manufacturerName": "aa",
+        "substanceName": "bb",
+        "productNumber": "test"
+}
+
+DELETE RECORD
+DELETE: http://localhost:8080/record/{recordID}
