@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class StreamProducts {
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
 
         List<Product> list = buildListProducts();
         List<ProductTestCategory> productTestCategoryList = buildListProductTestCategories();
@@ -35,13 +35,13 @@ public class StreamProducts {
         });
 
         System.out.println("|----------------------Products List with max Price----------------------------------|");
-/*
+*//*
         Map<String, List<Product>> collectProduct = list.stream()
                 .collect(Collectors.groupingBy(
                         Product::getCategory,
                         Collectors.maxBy(Comparator.comparing(Product::getPrice)))
                 );
-*/
+*//*
 
         Map<String, List<Product>> collectProduct = list.stream()
                 .collect(
@@ -119,5 +119,5 @@ public class StreamProducts {
             return productTestCategory;
         }
 
-
+*/
 }
