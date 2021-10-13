@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: grpc-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: grpc-service
+    spec:
+      containers:
+        - image:
+          imagePullPolicy: Always
+          name: grpc-service
+          ports:
+            - containerPort: 6565
+              protocol: TCP
+            - containerPort: 8080
+                protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grpc-service
+spec:
+  ports:
+    - port: 6565
+      protocol: TCP
+      targetPort: 6565
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    run: grpc-service
+  sessionAffinity: None
+  type: NodePort

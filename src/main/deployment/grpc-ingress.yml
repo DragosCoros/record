@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: grpc-ingress
+  annotations:
+    # Note that gRPC services must be specified as backend services.
+    nginx.ingress.kubernetes.io/grpc-backend: "true"
+spec:
+  tls:
+    - hosts:
+        # Certificate domain name
+        - grpc.example.com
+      secretName: grpc-secret
+  rules:
+    # gRPC service domain name
+    - host: grpc.example.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: grpc-service
+              servicePort: 6565
