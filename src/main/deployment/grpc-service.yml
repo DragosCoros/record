@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grpc-service
@@ -26,12 +26,14 @@ metadata:
   name: grpc-service
 spec:
   ports:
-    - port: 6565
-      protocol: TCP
-      targetPort: 6565
     - port: 8080
       protocol: TCP
       targetPort: 8080
+      name: normal-port
+    - port: 6565
+      protocol: TCP
+      targetPort: 6565
+      name: grpc-port
   selector:
     run: grpc-service
   sessionAffinity: None
