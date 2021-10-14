@@ -26,7 +26,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - SERVICE_NAME
+    - grpc.example.com
     secretName: esp-ssl
   backend:
     serviceName: esp-grpc-bookstore
