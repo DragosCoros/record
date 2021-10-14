@@ -24,12 +24,20 @@ spec:
               protocol: TCP
             - containerPort: 6565
               protocol: TCP
+          readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP    
       restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: grpc-service
+  annotations:
+    cloud.google.com/app-protocols: '{"grpc-port":"HTTP2", "normal-port": "HTTP"}'
+    service.alpha.kubernetes.io/app-protocols: '{"grpc-port":"HTTP2", "normal-port": "HTTP"}'
 spec:
   ports:
     - port: 8080
