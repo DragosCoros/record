@@ -4,7 +4,8 @@ metadata:
   name: grpc-ingress
   annotations:
     # Note that gRPC services must be specified as backend services.
-    nginx.ingress.kubernetes.io/grpc-backend: "true"
+    kubernetes.io/ingress.allow-http: "false"
+    cloud.google.com/app-protocols: '{"grpc-port":"HTTP2"}'
 spec:
   tls:
     - hosts:
